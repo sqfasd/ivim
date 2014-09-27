@@ -24,5 +24,7 @@ noremap <C-a> <esc>ggVG
 """""""""""""""""""""""""""""""""""""""
 " => quickfix shortcuts
 """""""""""""""""""""""""""""""""""""""
-map <F3> :cn<cr>
-map <F4> :cp<cr>
+map <F3> :cn<CR>
+map <F4> :cp<CR>
+
+nnoremap <silent> <F5> :Ack<CR>
