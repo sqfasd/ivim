@@ -27,4 +27,4 @@ noremap <C-a> <esc>ggVG
 map <F3> :cn<CR>
 map <F4> :cp<CR>
 
-nnoremap <silent> <F5> :Ack<CR>
+nnoremap <silent> <F5> :AckWindow<CR>
