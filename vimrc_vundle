@@ -59,6 +59,9 @@ colorscheme default
 set t_Co=256
 set background=dark
 
+set title
+set titlestring=%t%(\ %m%)%(\ (%{expand('%:p:h')})%)%(\ %a%)
+
 set nu
 
 set mouse=a
@@ -113,7 +116,12 @@ set laststatus=2
 
 set ttimeoutlen=50
 
-set list listchars=tab:▸\ ,trail:-
+set textwidth=80
+set list " Show these tabs and spaces and so on
+set listchars=tab:▸\ ,extends:>,precedes:<,trail:- " Change listchars
+set linebreak " Wrap long lines at a blank
+set showbreak=↪  " Change wrap line break
+set fillchars=diff:⣿,vert:│ " "
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -143,6 +151,10 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorline
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Mappings
