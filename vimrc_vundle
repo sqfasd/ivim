@@ -52,7 +52,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-syntax enable 
+syntax enable
 
 colorscheme default
 
@@ -78,13 +78,13 @@ set ignorecase
 set smartcase
 
 set hlsearch
-set incsearch 
+set incsearch
 
-set lazyredraw 
+set lazyredraw
 
 set magic
 
-set showmatch 
+set showmatch
 set mat=2
 
 set encoding=utf-8
