@@ -1,0 +1,239 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'L9'
+
+Plugin 'vim-scripts/a.vim'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Valloric/ListToggle'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'godlygeek/tabular'
+
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+
+"Plugin 'tpope/vim-fugitive' " git tools
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'rking/ag.vim'
+
+Plugin 'elzr/vim-json'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+filetype on
+filetype plugin on
+filetype plugin indent on
+
+syntax enable 
+
+colorscheme default
+
+set background=dark
+
+set nu
+
+set mouse=a
+
+set autoread
+
+set wildmenu
+
+set ruler
+set cursorline
+
+set hid
+
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set ignorecase
+set smartcase
+
+set hlsearch
+set incsearch 
+
+set lazyredraw 
+
+set magic
+
+set showmatch 
+set mat=2
+
+set encoding=utf-8
+set fileencodings=utf-8,gbk,GB18030,ucs-bom
+
+" Turn backup off
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Use spaces instead of tabs
+set expandtab
+" Be smart when using tabs ;)
+set smarttab
+" 1 tab == 4 spaces
+set shiftwidth=2
+set tabstop=2
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Always show the status line
+set laststatus=2
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+    set wildignore+=.git\*,.hg\*,.svn\*
+endif
+
+set completeopt=longest,menu
+
+" set tags, path ...
+"set path+=~/trunk/cpp
+"set path+=~/trunk/cpp/.ymake-out/opt/thrift-out
+"set path+=~/trunk/cpp/.ymake-out/opt/proto-out
+"set tag+=~/.tags/base
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Autocmd
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key Mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader = ","
+let g:mapleader = ","
+
+map j gj
+map k gk
+map <silent> <leader><cr> :noh<cr>
+map 0 ^
+map <leader>dt :call DeleteTrailingWS()<CR>
+
+" move cursor in edit mode
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" copy & paste
+vnoremap <C-c> "+y
+noremap <C-m> <esc>"+p
+noremap <C-a> <esc>ggVG
+
+" quickfix shortcuts
+map <F3> :cn<CR>
+map <F4> :cp<CR>
+nnoremap <silent> <F5> :Ag \\b<C-r><C-w>\\b  ./<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ListToggle
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+let g:lt_height = 10
+
+" nerdtree
+map <F9> :NERDTreeToggle<cr>
+
+" tagbar
+nmap <F12> :TagbarToggle<CR>
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader>z"
+let g:UltiSnipsJumpForwardTrigger="<leaderb>"
+
+" omnicppcomplete
+let OmniCpp_NamespaceSearch = 2
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_DisplayMode = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+" unite
+nmap <F10> :Unite outline <CR>
+nmap <F11> :Unite file_rec <CR>
+
+" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
