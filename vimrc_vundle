@@ -29,12 +29,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'godlygeek/tabular'
-
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/unite-outline'
+Plugin 'kien/ctrlp.vim'
 
 "Plugin 'tpope/vim-fugitive' " git tools
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 
 Plugin 'rking/ag.vim'
 
@@ -101,9 +99,7 @@ set noswapfile
 
 " Use spaces instead of tabs
 set expandtab
-" Be smart when using tabs ;)
 set smarttab
-" 1 tab == 4 spaces
 set shiftwidth=2
 set tabstop=2
 
@@ -190,22 +186,27 @@ nnoremap <silent> <F5> :Ag \\b<C-r><C-w>\\b  ./<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ListToggle
+""""""""""""""""""""""""""""""""""
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 let g:lt_height = 10
 
 " nerdtree
+""""""""""""""""""""""""""""""""""
 map <F9> :NERDTreeToggle<cr>
 
 " tagbar
-nmap <F12> :TagbarToggle<CR>
+""""""""""""""""""""""""""""""""""
+nmap <F10> :TagbarToggle<CR>
 
 " ultisnips
+""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader>z"
 let g:UltiSnipsJumpForwardTrigger="<leaderb>"
 
 " omnicppcomplete
+""""""""""""""""""""""""""""""""""
 let OmniCpp_NamespaceSearch = 2
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_DisplayMode = 1
@@ -215,9 +216,16 @@ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
-" unite
-nmap <F10> :Unite outline <CR>
-nmap <F11> :Unite file_rec <CR>
+" ctrlp
+""""""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_map = '<leader>f'
+nnoremap <leader>b :CtrlPMRU<cr>
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|build|node_modules)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
