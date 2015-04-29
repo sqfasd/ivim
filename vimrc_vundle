@@ -127,13 +127,11 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-set completeopt=longest,menu
+set completeopt=menuone,menu,longest
 
 " set tags, path ...
 "set path+=~/trunk/cpp
-"set path+=~/trunk/cpp/.ymake-out/opt/thrift-out
-"set path+=~/trunk/cpp/.ymake-out/opt/proto-out
-"set tag+=~/.tags/base
+set tag+=~/.tags/cpp
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Autocmd
