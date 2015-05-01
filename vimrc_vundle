@@ -114,10 +114,13 @@ set ttimeoutlen=50
 
 set textwidth=80
 set list " Show these tabs and spaces and so on
-set listchars=tab:▸\ ,extends:>,precedes:<,trail:- " Change listchars
+set listchars=tab:▸\ ,extends:>,precedes:< ",trail:- " Change listchars
 set linebreak " Wrap long lines at a blank
 set showbreak=↪  " Change wrap line break
 set fillchars=diff:⣿,vert:│ " "
+
+highlight WhitespaceEOL ctermbg=red guibg=red 
+match WhitespaceEOL /\s\+$/
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
