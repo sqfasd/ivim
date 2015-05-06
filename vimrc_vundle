@@ -24,7 +24,6 @@ Plugin 'Valloric/ListToggle'
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'ervandew/supertab'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -199,12 +198,6 @@ map <F9> :NERDTreeToggle<cr>
 " tagbar
 """"""""""""""""""""""""""""""""""
 nmap <F10> :TagbarToggle<CR>
-
-" ultisnips
-""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader>z"
-let g:UltiSnipsJumpForwardTrigger="<leaderb>"
 
 " omnicppcomplete
 """"""""""""""""""""""""""""""""""
