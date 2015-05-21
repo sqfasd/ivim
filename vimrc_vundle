@@ -20,7 +20,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Valloric/ListToggle'
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-scripts/OmniCppComplete'
 Plugin 'ervandew/supertab'
@@ -34,9 +33,6 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'airblade/vim-gitgutter'
 
 Plugin 'rking/ag.vim'
-
-Plugin 'elzr/vim-json'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
