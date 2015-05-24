@@ -8,7 +8,9 @@ mkdir -p ~/.vim/bundle
 test -d ~/.vim/bundle/Vundle.vim || \
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-test -f ~/.vimrc || ln -s $PROGDIR/vimrc_vundle ~/.vimrc
-test -f ~/.ctags || ln -s $PROGDIR/ctagsrc ~/.ctags
-mkdir -p ~/.tags
+ln -sf $PROGDIR/vimrc_vundle ~/.vimrc
+ln -sf $PROGDIR/ctagsrc ~/.ctags
+ln -sf $PROGDIR/editorconfig ~/.editorconfig
+
+test -d ~/.tags || mkdir -p ~/.tags
 cp -f tags/* ~/.tags/

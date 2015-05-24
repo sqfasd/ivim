@@ -33,6 +33,7 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'airblade/vim-gitgutter'
 
 Plugin 'rking/ag.vim'
+Plugin 'maksimr/vim-jsbeautify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -109,12 +110,12 @@ set ttimeoutlen=50
 
 set textwidth=80
 set list " Show these tabs and spaces and so on
-set listchars=tab:▸\ ,extends:>,precedes:< ",trail:- " Change listchars
+set listchars=tab:-\ ,extends:>,precedes:< ",trail:- " Change listchars
 set linebreak " Wrap long lines at a blank
 set showbreak=↪  " Change wrap line break
 set fillchars=diff:⣿,vert:│ " "
 
-highlight WhitespaceEOL ctermbg=red guibg=red 
+highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
 " Ignore compiled files
@@ -220,6 +221,14 @@ let g:ctrlp_custom_ignore = {
 " vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+
+" vim-jsbeautify
+"autocmd FileType javascript noremap <buffer>  <leader>ff :call JsBeautify()<cr>
+"autocmd FileType html noremap <buffer> <leader>ff :call HtmlBeautify()<cr>
+"autocmd FileType css noremap <buffer> <leader>ff :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  = :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> = :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> = :call RangeCSSBeautify()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper Functions
