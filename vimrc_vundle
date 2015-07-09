@@ -191,6 +191,7 @@ let g:lt_height = 10
 " nerdtree
 """"""""""""""""""""""""""""""""""
 map <F9> :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\~$', '\.o$', '\.lo$']
 
 " tagbar
 """"""""""""""""""""""""""""""""""
