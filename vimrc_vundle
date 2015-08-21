@@ -66,6 +66,7 @@ set wildmenu
 
 set ruler
 set cursorline
+set cursorcolumn
 
 set hid
 
@@ -144,10 +145,20 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-autocmd WinLeave * set nocursorline
-autocmd WinEnter * set cursorline
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
+func! SetCursorLine()
+  set cursorline
+  set cursorcolumn
+endfunc
+
+func! SetNoCursorLine()
+  set nocursorline
+  set nocursorcolumn
+endfunc
+
+autocmd WinLeave * call SetNoCursorLine()
+autocmd WinEnter * call SetCursorLine()
+autocmd InsertEnter * call SetNoCursorLine()
+autocmd InsertLeave * call SetCursorLine()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Mappings
