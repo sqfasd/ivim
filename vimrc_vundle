@@ -35,7 +35,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'maksimr/vim-jsbeautify'
 
-" golang plugins
+" [golang] plugins
 Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
@@ -244,6 +244,16 @@ let g:cpp_experimental_template_highlight = 1
 autocmd FileType javascript vnoremap <buffer>  = :call RangeJsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> = :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> = :call RangeCSSBeautify()<cr>
+
+" golang mappings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_options = "-tabs=false -tabwidth=4 -e=true"
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper Functions
