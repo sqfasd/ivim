@@ -162,6 +162,7 @@ autocmd WinLeave * call SetNoCursorLine()
 autocmd WinEnter * call SetCursorLine()
 autocmd InsertEnter * call SetNoCursorLine()
 autocmd InsertLeave * call SetCursorLine()
+autocmd BufWritePre,FileWritePre * call DeleteTrailingWS()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Mappings
