@@ -28,12 +28,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
 
 "Plugin 'tpope/vim-fugitive' " git tools
 "Plugin 'airblade/vim-gitgutter'
 
-Plugin 'rking/ag.vim'
+" [javascript] plugins
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'Shutnik/jshint2.vim'
 
 " [golang] plugins
 Plugin 'fatih/vim-go'
@@ -165,6 +167,9 @@ autocmd WinLeave * call SetNoCursorLine()
 autocmd WinEnter * call SetCursorLine()
 autocmd InsertEnter * call SetNoCursorLine()
 autocmd InsertLeave * call SetCursorLine()
+"autocmd BufWritePre,FileWritePre * call DeleteTrailingWS()
+autocmd FileType c,cpp,java,php,shell,javascript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType javascript autocmd BufWritePre <buffer> :JSHint
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Mappings
