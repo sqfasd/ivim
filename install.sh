@@ -1,13 +1,16 @@
 #!/bin/bash
 
-VIM_DIR=~/i/ivim
-TEMP_DIR=~/.temp_dirs
+readonly PROGDIR=$(readlink -m $(dirname $0))
 
-test -d $TEMP_DIR || mkdir $TEMP_DIR
+set -x
 
-test -f ~/.vimrc && mv ~/.vimrc ~/.vimrc.bak
-ln -s $VIM_DIR/vimrc ~/.vimrc
+mkdir -p ~/.vim/bundle
+test -d ~/.vim/bundle/Vundle.vim || \
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-test -L ~/.vim_runtime && rm ~/.vim_runtime
-test -d ~/.vim_runtime && mv ~/.vim_runtime ~/.vim_runtime.bak
-ln -s $VIM_DIR/vim_runtime ~/.vim_runtime
+ln -sf $PROGDIR/vimrc_vundle ~/.vimrc
+ln -sf $PROGDIR/ctagsrc ~/.ctags
+ln -sf $PROGDIR/editorconfig ~/.editorconfig
+
+test -d ~/.tags || mkdir -p ~/.tags
+cp -f tags/* ~/.tags/
