@@ -8,7 +8,7 @@ mkdir -p ~/.vim/bundle
 test -d ~/.vim/bundle/Vundle.vim || \
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-ln -sf $PROGDIR/vimrc_vundle ~/.vimrc
+ln -sf $PROGDIR/vimrc ~/.vimrc
 ln -sf $PROGDIR/ctagsrc ~/.ctags
 ln -sf $PROGDIR/editorconfig ~/.editorconfig
 
