@@ -34,7 +34,7 @@ Plugin 'rking/ag.vim'
 "Plugin 'airblade/vim-gitgutter'
 
 " [javascript] plugins
-Plugin 'maksimr/vim-jsbeautify'
+Plugin 'pangloss/vim-javascript'
 Plugin 'Shutnik/jshint2.vim'
 
 " [golang] plugins
